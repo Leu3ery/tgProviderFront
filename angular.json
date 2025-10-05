@@ -54,6 +54,9 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "allowedHosts": ["smallest-islands-miller-begun.trycloudflare.com"]
+          },
           "configurations": {
             "production": {
               "buildTarget": "tgProviderFront:build:production"
@@ -88,5 +91,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1ecacf3f-f20b-4954-82bc-ea6e465b6014"
   }
 }
