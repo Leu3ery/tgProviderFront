@@ -1,5 +1,17 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Auth } from './core/services/auth';
+import type { WebApp } from '@twa-dev/types';
+import { JsonPipe } from '@angular/common';
+import { User } from './models/auth.models';
+
+declare global {
+  interface Window {
+    Telegram: {
+      WebApp: WebApp;
+    };
+  }
+}
 
 @Component({
   selector: 'app-root',
@@ -8,5 +20,11 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('tgProviderFront');
+  auth = inject(Auth);
+
+  constructor() {
+    this.auth.getMe().subscribe((user: User) => {
+      this.auth.user.set(user);
+    });
+  }
 }
