@@ -1,10 +1,26 @@
 <div class="wallet-header">
   <div class="wallet-balance">
     <img src="ton_symbol.svg" alt="TON" class="wallet-currency-icon" />
-    <span class="wallet-amount">{{(auth.user()?.balance ?? 0) | currency:'':'':'1.2-3'}}</span>
-    <button class="wallet-add">+</button>
+    <span class="wallet-amount">{{(auth.user()?.balance ?? 0) / 1000000000 | currency:'':'':'1.2-3'}}</span>
+    <button class="wallet-add" (click)="openPopup()">+</button>
   </div>
 
   <div id="ton-connect"></div>
   <button (click)="connect()" hidden>Connect</button>
 </div>
+
+
+@if (popupOpen) {
+<div class="popup-backdrop" (click)="closePopup()">
+  <div class="popup-window" (click)="$event.stopPropagation()">
+    <h2>Add TON</h2>
+    <p>Enter the amount you want to deposit.</p>
+    <input type="number" placeholder="Amount" [(ngModel)]="amount"/>
+    <p class="errorMessage">{{errorMessage}}</p>
+    <div class="popup-actions">
+      <button class="btn-confirm" (click)="confirm()">Confirm</button>
+      <button class="btn-cancel" (click)="closePopup()">Cancel</button>
+    </div>
+  </div>
+</div>
+}
