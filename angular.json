@@ -55,7 +55,7 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
-            "allowedHosts": ["diy-melbourne-ownership-chef.trycloudflare.com"]
+            "allowedHosts": ["adaptation-donna-creating-awesome.trycloudflare.com"]
           },
           "configurations": {
             "production": {
