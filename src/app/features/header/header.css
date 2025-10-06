@@ -1,0 +1,48 @@
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--tg-theme-secondary-bg-color);
+  padding: var(--padding-default);
+  max-width: var(--width-default);
+  border-radius: var(--border-radius-default);;
+}
+
+/* --- Ліва частина: баланс --- */
+.wallet-balance {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.wallet-currency-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  transform: translateY(1px);
+}
+
+.wallet-amount {
+  font-size: 1.25rem;
+}
+
+
+.wallet-add {
+  background: none;
+  border: none;
+  color: var(--tg-theme-text-color);
+  font-weight: 400;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+.wallet-add:hover {
+  background-color: var(--tg-theme-section-bg-color);
+  transform: scale(1.05);
+}
