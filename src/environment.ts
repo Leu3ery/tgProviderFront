@@ -1,3 +1,4 @@
 export const config = {
-    basicURL: 'https://marshall-stuck-disturbed-limitation.trycloudflare.com/api',
+    basicURL: 'https://tgprovider.leuzery.live/api',
+    botURL: 'https://t.me/yourtgprovider_bot',
 }

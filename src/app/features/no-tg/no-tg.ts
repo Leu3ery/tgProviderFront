@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { config } from '../../../environment';
 
 @Component({
   selector: 'app-no-tg',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './no-tg.css'
 })
 export class NoTg {
-
+  config = config;
 }
