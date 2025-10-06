@@ -1,1 +1,10 @@
-<p>header works!</p>
+<div class="wallet-header">
+  <div class="wallet-balance">
+    <img src="ton_symbol.svg" alt="TON" class="wallet-currency-icon" />
+    <span class="wallet-amount">{{(auth.user()?.balance ?? 0) | currency:'':'':'1.2-3'}}</span>
+    <button class="wallet-add">+</button>
+  </div>
+
+  <div id="ton-connect"></div>
+  <button (click)="connect()" hidden>Connect</button>
+</div>
