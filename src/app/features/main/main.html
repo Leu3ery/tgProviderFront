@@ -1,5 +1,17 @@
 @if (auth.user()) {
-    <h1>Welcome, {{ auth.user() | json }}</h1>
-}
+<div class="center">
+  <main class="app">
+    <header class="app-header">
+      <app-header></app-header>
+    </header>
 
-  
+    <section class="app-content">
+      <router-outlet></router-outlet>
+    </section>
+
+    <footer class="app-footer">
+      <app-footer></app-footer>
+    </footer>
+  </main>
+</div>
+}

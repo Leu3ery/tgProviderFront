@@ -55,7 +55,7 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
-            "allowedHosts": ["adaptation-donna-creating-awesome.trycloudflare.com"]
+            "allowedHosts": ["drawn-rebecca-wholesale-damages.trycloudflare.com"]
           },
           "configurations": {
             "production": {
