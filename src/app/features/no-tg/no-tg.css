@@ -1,0 +1,34 @@
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--tg-theme-accent-text-color);
+}
+
+p {
+  color: var(--tg-theme-subtitle-text-color);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+a {
+  display: inline-block;
+  background-color: var(--tg-theme-button-color);
+  color: var(--tg-theme-button-text-color);
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  background-color: color-mix(in srgb, var(--tg-theme-button-color) 85%, black);
+}

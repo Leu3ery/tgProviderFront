@@ -1,1 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  /* === Telegram Dark Theme (custom fallback) === */
+  --tg-color-scheme: dark;
+
+  /* Основний фон (фон сторінки) */
+  --tg-theme-bg-color: #212121;
+
+  /* Вторинний фон (наприклад, для карток, блоків, секцій) */
+  --tg-theme-secondary-bg-color: #181818;
+
+  /* Колір тексту */
+  --tg-theme-text-color: #ffffff;
+
+  /* Колір підзаголовків / допоміжного тексту */
+  --tg-theme-subtitle-text-color: #aaaaaa;
+
+  /* Колір підказок, placeholder'ів тощо */
+  --tg-theme-hint-color: #aaaaaa;
+
+  /* Акцентний колір (Telegram violet) */
+  --tg-theme-accent-text-color: #8774e1;
+
+  /* Колір посилань */
+  --tg-theme-link-color: #8774e1;
+
+  /* Колір кнопок */
+  --tg-theme-button-color: #8774e1;
+
+  /* Колір тексту на кнопках */
+  --tg-theme-button-text-color: #ffffff;
+
+  /* Колір заголовка / хедера */
+  --tg-theme-header-bg-color: #212121;
+
+  /* Колір секцій */
+  --tg-theme-section-bg-color: #212121;
+
+  /* Колір заголовків секцій */
+  --tg-theme-section-header-text-color: #8774e1;
+
+  /* Колір роздільників (для card borders, hr тощо) */
+  --tg-theme-section-separator-color: #2a2a2a;
+
+  /* Колір тексту для деструктивних дій (наприклад, “Delete”, “Remove”) */
+  --tg-theme-destructive-text-color: #ff595a;
+
+  /* Фон нижньої панелі (якщо є) */
+  --tg-theme-bottom-bar-bg-color: #181818;
+
+  /* Viewport (для Telegram WebApp API або fallback) */
+  --tg-viewport-height: 100vh;
+  --tg-viewport-stable-height: 100vh;
+}
+
+
+
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+}

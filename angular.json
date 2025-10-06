@@ -55,7 +55,7 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
-            "allowedHosts": ["smallest-islands-miller-begun.trycloudflare.com"]
+            "allowedHosts": ["diy-melbourne-ownership-chef.trycloudflare.com"]
           },
           "configurations": {
             "production": {
