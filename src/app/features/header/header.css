@@ -6,6 +6,7 @@
   padding: var(--padding-default);
   max-width: var(--width-default);
   border-radius: var(--border-radius-default);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* --- Ліва частина: баланс --- */
@@ -83,7 +84,7 @@
 }
 
 .popup-window h2 {
-  color: var(--tg-theme-accent-text-color);
+  color: var(--tg-theme-text-color);
 }
 
 .popup-window input {
@@ -114,7 +115,7 @@
 }
 
 .btn-confirm {
-  background: var(--tg-theme-button-color);
+  background: var(--theme-color);
   color: var(--tg-theme-button-text-color);
 }
 

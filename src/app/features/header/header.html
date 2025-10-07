@@ -13,8 +13,8 @@
 @if (popupOpen) {
 <div class="popup-backdrop" (click)="closePopup()">
   <div class="popup-window" (click)="$event.stopPropagation()">
-    <h2>Add TON</h2>
-    <p>Enter the amount you want to deposit.</p>
+    <h2>Deposit TON</h2>
+    <!-- <p>Enter the amount you want to deposit.</p> -->
     <input type="number" placeholder="Amount" [(ngModel)]="amount"/>
     <p class="errorMessage">{{errorMessage}}</p>
     <div class="popup-actions">

@@ -17,6 +17,7 @@
   flex-direction: column;
   height: 100%;
   width: var(--width-default);
+  padding: 1rem;
 
   gap: 1rem;
 }
@@ -29,7 +30,7 @@
 .app-content {
   flex: 1;
   /* to commit  */
-  background-color: var(--tg-theme-secondary-bg-color);
+  /* background-color: var(--tg-theme-secondary-bg-color); */
 }
 
 .app-footer {
