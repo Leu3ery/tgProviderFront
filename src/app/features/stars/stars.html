@@ -31,28 +31,33 @@
 
     <section class="section">
       <h3>Or select a package</h3>
+
       <div class="package-list">
-        <label class="package">
-          <input type="radio" name="stars" checked />
-          <div class="package-content">
-            <span>⭐ 50 Stars</span>
-            <span class="price">💎 0.2630</span>
-          </div>
-        </label>
+        <label class="package" *ngFor="let pkg of packages">
+          <input
+            type="radio"
+            name="stars"
+            [value]="pkg.amount"
+            [(ngModel)]="selectedPackageAmount"
+            (ngModelChange)="onPackageChange($event)"
 
-        <label class="package">
-          <input type="radio" name="stars" />
+          />
           <div class="package-content">
-            <span>🌟 500 Stars</span>
-            <span class="price">💎 2.6309</span>
-          </div>
-        </label>
+            <!-- иконка звезды -->
+            <span class="pkg-left">
+          <img
+            src="https://nztcdn.com/files/6514f1e6-dab4-4d49-806a-3ff22d7793e5.webp"
+            alt="star"
+            class="icon"
+          />
+              {{ pkg.amount | number }} Stars
+        </span>
 
-        <label class="package">
-          <input type="radio" name="stars" />
-          <div class="package-content">
-            <span>💫 2.5K Stars</span>
-            <span class="price">💎 13.1548</span>
+            <!-- иконка TON -->
+            <span class="pkg-right">
+          <img src="ton_symbol.svg" alt="TON" class="icon" />
+              {{ pkg.price | number: '1.4-4' }}
+        </span>
           </div>
         </label>
       </div>

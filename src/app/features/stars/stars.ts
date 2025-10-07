@@ -6,6 +6,7 @@ import {tap} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Auth} from '../../core/services/auth';
 import {GetUser} from './get-user';
+import {DecimalPipe, CommonModule} from '@angular/common';
   interface Recipient{
     recipient: string;
     photo: string;
@@ -15,11 +16,14 @@ import {GetUser} from './get-user';
 
 @Component({
   selector: 'app-stars',
+  standalone: true,
   imports: [
-    FormsModule
+    CommonModule,
+    FormsModule,
+    DecimalPipe
   ],
   templateUrl: './stars.html',
-  styleUrl: './stars.css'
+  styleUrls: ['./stars.css']
 })
 export class Stars {
   isError = false;
@@ -30,6 +34,13 @@ export class Stars {
   mes = "";
   mes_2 = ""
   starAmount : number = 50;
+  selectedPackageAmount: number | null = null; // выбранный пакет (радио)
+
+  packages = [
+    { amount: 50,   price: 0.2630,  emoji: '⭐' },
+    { amount: 500,  price: 2.6309,  emoji: '🌟' },
+    { amount: 2500, price: 13.1548, emoji: '💫' },
+  ];
 
 
 
@@ -38,13 +49,12 @@ export class Stars {
 
   getUserInfo() {
     this.proof_user.proof_UserName(this.recipientUsername).subscribe({
-      next: (res:Recipient) => {this.resi = res;
-      this.mes = this.resi.name
-        this.isSuccess = true
-        this.isError = false
-     }
-      ,
-
+      next: (res: Recipient ) => {
+        this.resi = res;
+        this.mes = this.resi.name;
+        this.isSuccess = true;
+        this.isError = false;
+      },
       error: (err : any) => {this.mes = "No Telegram users found.";
       this.isError = true;
       this.isSuccess = false;}
@@ -67,11 +77,17 @@ checkStarsAmount(){
       this.mes_2 = "";
     }
 }
+  onPackageChange(pkgAmount: number) {
+    this.selectedPackageAmount = pkgAmount;
+    this.starAmount = pkgAmount;
+    this.checkStarsAmount()// синхронизируем с инпутом
+  }
 
-
-
-
-
+  onAmountInput() {
+    // если пользователь ввёл руками, пытаемся найти совпадающий пакет
+    const match = this.packages.find(p => p.amount === Number(this.starAmount));
+    this.selectedPackageAmount = match ? match.amount : null; // переключить/сбросить радио
+  }
 
 
 }

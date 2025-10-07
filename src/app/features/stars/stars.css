@@ -220,3 +220,17 @@
   text-align: right;
   padding-top: 8px;/* красный */
 }
+
+.icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.pkg-left,
+.pkg-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
