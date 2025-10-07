@@ -1,6 +1,8 @@
 export const config = {
     basicURL: 'https://tgprovider.leuzery.live/api',
     botURL: 'https://t.me/yourtgprovider_bot',
-    manifestURL: 'https://worldwide-safer-reseller-partner.trycloudflare.com/tonconnect-manifest.json',
-    tonAddress: 'UQBbhd0rMrKrt4uNkSY2YI8elK-EPfVREaZ5RBYupZMlfw-b'
+    manifestURL: 'https://unroiled-gratifiedly-deandra.ngrok-free.dev/tonconnect-manifest.json',
+    tonAddress: 'UQBbhd0rMrKrt4uNkSY2YI8elK-EPfVREaZ5RBYupZMlfw-b',
+    koefizzient : 0.10
+
 }

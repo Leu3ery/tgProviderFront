@@ -26,7 +26,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
           return next(reqWithToken);
         }),
         catchError((err) => {
-          console.error('Login failed:', err);
+          console.error(err);
           router.navigate(['/noTg']);
           return throwError(() => err);
         })
@@ -56,7 +56,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
               return next(reqWithToken);
             }),
             catchError((err) => {
-              console.error('Login failed:', err);
+              console.error(err);
               router.navigate(['/noTg']);
               return throwError(() => err);
             })

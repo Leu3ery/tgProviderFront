@@ -6,16 +6,23 @@
     </p>
 
     <section class="section">
+      <div class="recipient-header">
       <h3>Choose recipient</h3>
-      <div class="recipient">
-        <input type="text" placeholder="Enter Telegram username..." />
+
       </div>
+
+      <div class="recipient">
+
+        <input type="text" placeholder="Enter Telegram username..." [(ngModel)]="recipientUsername" (blur)="getUserInfo()" (input)="checkEmpty()"/>
+
+      </div>
+      <p [class.error]="isError" [class.success]="isSuccess">{{ mes }}</p>
     </section>
 
     <section class="section">
       <h3>Choose quantity of Telegram Stars</h3>
       <div class="input-icon">
-        <span>⭐</span>
+        <span></span>
         <input type="number" placeholder="Enter amount from 50 to 1,000,000" />
       </div>
     </section>
@@ -46,8 +53,6 @@
             <span class="price">💎 13.1548</span>
           </div>
         </label>
-
-        <button class="more-btn">Show More Options ⌄</button>
       </div>
     </section>
 

@@ -58,7 +58,7 @@ export class Header {
 
       console.log('Transaction recorded:', data);
     } catch (error) {
-      console.error('Error recording transaction:', error);
+      console.error(error);
       this.errorMessage = 'Failed to record transaction. Please try again.';
       return;
     }
@@ -88,7 +88,7 @@ export class Header {
     try {
       await this.tonConnectUI.openModal();
     } catch (error) {
-      console.error('Error connecting to wallet:', error);
+      console.error(error);
     }
   }
 }
