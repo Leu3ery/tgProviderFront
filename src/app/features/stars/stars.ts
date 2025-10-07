@@ -28,6 +28,8 @@ export class Stars {
   proof_user = inject(GetUser);
   recipientUsername: string = "";
   mes = "";
+  mes_2 = ""
+  starAmount : number = 50;
 
 
 
@@ -57,6 +59,13 @@ checkEmpty(){
 
   }
 
+}
+checkStarsAmount(){
+    if (this.starAmount < 50) {
+      this.mes_2 = "You can buy a minimum of 50 stars";
+    }else {
+      this.mes_2 = "";
+    }
 }
 
 

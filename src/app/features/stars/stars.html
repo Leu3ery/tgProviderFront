@@ -23,8 +23,10 @@
       <h3>Choose quantity of Telegram Stars</h3>
       <div class="input-icon">
         <span></span>
-        <input type="number" placeholder="Enter amount from 50 to 1,000,000" />
+        <input type="number" placeholder="Enter amount from 50 to 1,000,000" [(ngModel)]="starAmount" (blur)="(checkStarsAmount())" />
+
       </div>
+      <p class="error">{{mes_2}}</p>
     </section>
 
     <section class="section">
