@@ -9,3 +9,6 @@ export interface Recipient {
   photo: string;
   name: string;
 }
+export interface TonRate {
+  "tonRate": number;
+}

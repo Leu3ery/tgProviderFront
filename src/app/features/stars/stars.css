@@ -220,6 +220,15 @@
   text-align: right;
   padding-top: 8px;/* красный */
 }
+.classic{
+    color: #ffffff;
+    font-size: 12px;
+    margin-left: 4px;
+    text-align: right;
+    padding-top: 8px;
+}
+
+
 
 .icon {
   width: 20px;
@@ -233,4 +242,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
+}
+#usd{
+  color: #b3b3b3;
 }

@@ -26,7 +26,14 @@
         <input type="number" placeholder="Enter amount from 50 to 1,000,000" [(ngModel)]="starAmount" (blur)="(checkStarsAmount())" />
 
       </div>
-      <p class="error">{{mes_2}}</p>
+      <p [class.error]="isError_2" [class.classic]="isClassic">@if (typeof mes_2 === 'string') {
+        {{mes_2}}
+
+      } @else {
+        <img src="ton_symbol.svg" alt="TON" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;" /><span>{{ mes_2 | number:'1.0-4' }}</span> <span id="usd"> ~  ${{getUSD() | number:'1.0-2'}} </span>
+      }
+
+      </p>
     </section>
 
     <section class="section">
@@ -63,6 +70,7 @@
       </div>
     </section>
 
-    <button class="buy-btn">Buy 50 Telegram Stars</button>
+
+    <button class="buy-btn">Buy {{starAmount}} Telegram Stars</button>
   </div>
 </div>

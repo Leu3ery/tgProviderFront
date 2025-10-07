@@ -7,12 +7,8 @@ import {HttpClient} from '@angular/common/http';
 import {Auth} from '../../core/services/auth';
 import {GetUser} from './get-user';
 import {DecimalPipe, CommonModule} from '@angular/common';
-  interface Recipient{
-    recipient: string;
-    photo: string;
-    name: string;
+import {Recipient, TonRate} from '../../models/auth.models';
 
-  }
 
 @Component({
   selector: 'app-stars',
@@ -28,24 +24,47 @@ import {DecimalPipe, CommonModule} from '@angular/common';
 export class Stars {
   isError = false;
   isSuccess = false;
+  isError_2 = false;
+  isClassic = false;
   resi: Recipient|null = null ;
   proof_user = inject(GetUser);
   recipientUsername: string = "";
   mes = "";
-  mes_2 = ""
+  mes_2 :string|number = ""
   starAmount : number = 50;
-  selectedPackageAmount: number | null = null; // выбранный пакет (радио)
+  selectedPackageAmount: number | null = null; // выбранный пакет (радио)#
+  tonRate : number = 3;
 
-  packages = [
-    { amount: 50,   price: 0.2630,  emoji: '⭐' },
-    { amount: 500,  price: 2.6309,  emoji: '🌟' },
-    { amount: 2500, price: 13.1548, emoji: '💫' },
+  packages: { amount: number; price: number }[] = [
+    { amount: 50,   price: 0 },
+    { amount: 500,  price: 0 },
+    { amount: 2500, price: 0 },
   ];
 
 
 
+constructor() {
+  this.getTonRate()
+}
 
 
+
+getTonRate(){
+  this.proof_user.get_TonRate().subscribe({
+    next: (res ) => {
+      this.tonRate = res.tonRate;
+      console.log(this.tonRate);
+      this.packages = this.packages.map(p => ({
+        ...p,
+        price: ((0.015 * p.amount) / this.tonRate) + config.koefizzient * ((0.015 * p.amount) / this.tonRate)
+      }));
+    },
+    error: err => {
+      console.log(err);
+    }
+  })
+
+}
 
   getUserInfo() {
     this.proof_user.proof_UserName(this.recipientUsername).subscribe({
@@ -72,9 +91,13 @@ checkEmpty(){
 }
 checkStarsAmount(){
     if (this.starAmount < 50) {
+      this.isError_2 = true;
+      this.isClassic = false;
       this.mes_2 = "You can buy a minimum of 50 stars";
     }else {
-      this.mes_2 = "";
+      this.isError_2 = false;
+      this.isClassic = true;
+      this.mes_2 = ((0.015 * this.starAmount) / this.tonRate) + config.koefizzient * ((0.015 * this.starAmount) / this.tonRate);
     }
 }
   onPackageChange(pkgAmount: number) {
@@ -82,12 +105,12 @@ checkStarsAmount(){
     this.starAmount = pkgAmount;
     this.checkStarsAmount()// синхронизируем с инпутом
   }
+  getUSD(){
+  return this.starAmount * 0.015 + (this.starAmount * 0.015)*config.koefizzient;
 
-  onAmountInput() {
-    // если пользователь ввёл руками, пытаемся найти совпадающий пакет
-    const match = this.packages.find(p => p.amount === Number(this.starAmount));
-    this.selectedPackageAmount = match ? match.amount : null; // переключить/сбросить радио
   }
+
+
 
 
 }
