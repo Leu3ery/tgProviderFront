@@ -17,14 +17,22 @@ declare global {
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   auth = inject(Auth);
 
   constructor() {
-    this.auth.getMe().subscribe((user: User) => {
-      this.auth.user.set(user);
-    });
+    // this.auth.getMe().subscribe((user: User) => {
+    //   this.auth.user.set(user);
+    // });
+    this.auth.getMe().subscribe((user) => this.auth.user.set(user));
+
+    setInterval(() => {
+      this.auth.getMe().subscribe({
+        next: (user) => this.auth.user.set(user),
+        error: (err) => console.error('Refresh failed', err),
+      });
+    }, 8000);
   }
 }
