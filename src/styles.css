@@ -43,7 +43,7 @@
   --tg-theme-section-separator-color: #2a2a2a;
 
   /* Колір тексту для деструктивних дій (наприклад, “Delete”, “Remove”) */
-  --tg-theme-destructive-text-color: #ff595a;
+  --tg-theme-destructive-text-color: #ff0000;
 
   /* Фон нижньої панелі (якщо є) */
   --tg-theme-bottom-bar-bg-color: #181818;

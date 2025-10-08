@@ -1,56 +1,77 @@
 <div class="center">
   <div class="buy-stars-card">
-    <h1>Buy Telegram Stars ⭐</h1>
+
+    <h1>Buy Telegram Stars </h1>
     <p class="subtitle">
       Top up Stars Balance for yourself or your friends and colleagues.
     </p>
 
+
     <section class="section">
+      <div class="recipient-header">
       <h3>Choose recipient</h3>
-      <div class="recipient">
-        <input type="text" placeholder="Enter Telegram username..." />
+
       </div>
+
+      <div class="recipient">
+
+        <input type="text" placeholder="Enter Telegram username..." [(ngModel)]="recipientUsername" (blur)="getUserInfo()" (input)="checkEmpty()"/>
+
+      </div>
+      <p [class.error]="isError" [class.success]="isSuccess">{{ mes }}</p>
     </section>
 
     <section class="section">
       <h3>Choose quantity of Telegram Stars</h3>
       <div class="input-icon">
-        <span>⭐</span>
-        <input type="number" placeholder="Enter amount from 50 to 1,000,000" />
+        <span></span>
+        <input type="number" placeholder="Enter amount from 50 to 1,000,000" [(ngModel)]="starAmount" (blur)="(checkStarsAmount())" />
+
       </div>
+      <p [class.error]="isError_2" [class.classic]="isClassic">@if (typeof mes_2 === 'string') {
+        {{mes_2}}
+
+      } @else {
+        <img src="ton_symbol.svg" alt="TON" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;" /><span>{{ mes_2 | number:'1.0-4' }}</span> <span id="usd"> ~  ${{usdAmount| number:'1.0-2'}} </span>
+      }
+
+      </p>
     </section>
 
     <section class="section">
       <h3>Or select a package</h3>
+
       <div class="package-list">
-        <label class="package">
-          <input type="radio" name="stars" checked />
+        <label class="package" *ngFor="let pkg of packages">
+          <input
+            type="radio"
+            name="stars"
+            [value]="pkg.amount"
+            [(ngModel)]="selectedPackageAmount"
+            (ngModelChange)="onPackageChange($event)"
+
+          />
           <div class="package-content">
-            <span>⭐ 50 Stars</span>
-            <span class="price">💎 0.2630</span>
+            <!-- иконка звезды -->
+            <span class="pkg-left">
+          <img
+            src="https://nztcdn.com/files/6514f1e6-dab4-4d49-806a-3ff22d7793e5.webp"
+            alt="star"
+            class="icon"
+          />
+              {{ pkg.amount | number }} Stars
+        </span>
+
+            <!-- иконка TON -->
+            <span class="pkg-right">
+          <img src="ton_symbol.svg" alt="TON" class="icon" />
+              {{ pkg.price | number: '1.4-4' }}
+        </span>
           </div>
         </label>
-
-        <label class="package">
-          <input type="radio" name="stars" />
-          <div class="package-content">
-            <span>🌟 500 Stars</span>
-            <span class="price">💎 2.6309</span>
-          </div>
-        </label>
-
-        <label class="package">
-          <input type="radio" name="stars" />
-          <div class="package-content">
-            <span>💫 2.5K Stars</span>
-            <span class="price">💎 13.1548</span>
-          </div>
-        </label>
-
-        <button class="more-btn">Show More Options ⌄</button>
       </div>
     </section>
+    <button class="buy-btn"  [disabled]="resi==null||isError_2" (click)="buyStars()"> Buy {{starAmount}} Telegram Stars</button>
 
-    <button class="buy-btn">Buy 50 Telegram Stars</button>
   </div>
 </div>

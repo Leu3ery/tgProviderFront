@@ -31,7 +31,7 @@ export class App {
     setInterval(() => {
       this.auth.getMe().subscribe({
         next: (user) => this.auth.user.set(user),
-        error: (err) => console.error('Refresh failed', err),
+        error: (err) => console.error(err),
       });
     }, 8000);
   }
