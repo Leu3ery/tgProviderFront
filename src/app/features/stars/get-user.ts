@@ -16,4 +16,5 @@ export class GetUser {
   get_TonRate(){
     return this.http.get<TonRate>(`${config.basicURL}/stars/getTonRate`);
   }
+
 }

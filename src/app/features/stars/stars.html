@@ -6,6 +6,7 @@
       Top up Stars Balance for yourself or your friends and colleagues.
     </p>
 
+
     <section class="section">
       <div class="recipient-header">
       <h3>Choose recipient</h3>
@@ -70,8 +71,6 @@
         </label>
       </div>
     </section>
-
-
-    <button class="buy-btn">Buy {{starAmount}} Telegram Stars</button>
+    <button class="buy-btn"  [disabled]="resi==null||isError_2"> Buy {{starAmount}} Telegram Stars</button>
   </div>
 </div>

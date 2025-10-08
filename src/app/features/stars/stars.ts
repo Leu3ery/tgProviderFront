@@ -41,6 +41,7 @@ export class Stars {
     { amount: 500,  price: 0 },
     { amount: 2500, price: 0 },
   ];
+  show = false;
 
 
 
@@ -79,7 +80,8 @@ getTonRate(){
       },
       error: (err : any) => {this.mes = "No Telegram users found.";
       this.isError = true;
-      this.isSuccess = false;}
+      this.isSuccess = false;
+      this.resi = null;}
 
     });
 }
@@ -113,8 +115,10 @@ checkStarsAmount(){
   this.usdAmount = this.starAmount * 0.015 + (this.starAmount * 0.015)*config.koefizzient;
 
   }
+  buyStars(){
+
+  }
 
 
-
-
+  protected readonly tap = tap;
 }
