@@ -122,10 +122,10 @@ checkStarsAmount(){
 
   }
   buyStars(){
-  if(this.tonAmount >= this.auth.user()!.balance ){
+  if(this.tonAmount * 1000000000 >= this.auth.user()!.balance ){
     alert("You have not enough TON!")
   }else{
-    if(confirm("You are buying " + this.starAmount + " stars. To @" + this.recipientUsername + "Is everything okay?" )){
+    if(confirm("You are buying " + this.starAmount + " stars to @" + this.recipientUsername + "Is everything okay?" )){
       this.proof_user.buyStars(this.recipientUsername , this.starAmount).subscribe({
         next: (res ) => {
           alert("You successfully bought " + this.starAmount + " stars!");
