@@ -32,6 +32,7 @@ export class Stars {
   mes = "";
   mes_2 :string|number = ""
   starAmount : number = 50;
+  usdAmount : number = 0;
   selectedPackageAmount: number | null = null; // выбранный пакет (радио)#
   tonRate : number = 3;
 
@@ -45,6 +46,7 @@ export class Stars {
 
 constructor() {
   this.getTonRate()
+
 }
 
 
@@ -58,6 +60,7 @@ getTonRate(){
         ...p,
         price: ((0.015 * p.amount) / this.tonRate) + config.koefizzient * ((0.015 * p.amount) / this.tonRate)
       }));
+      this.checkStarsAmount()
     },
     error: err => {
       console.log(err);
@@ -98,6 +101,7 @@ checkStarsAmount(){
       this.isError_2 = false;
       this.isClassic = true;
       this.mes_2 = ((0.015 * this.starAmount) / this.tonRate) + config.koefizzient * ((0.015 * this.starAmount) / this.tonRate);
+      this.getUSD()
     }
 }
   onPackageChange(pkgAmount: number) {
@@ -106,7 +110,7 @@ checkStarsAmount(){
     this.checkStarsAmount()// синхронизируем с инпутом
   }
   getUSD(){
-  return this.starAmount * 0.015 + (this.starAmount * 0.015)*config.koefizzient;
+  this.usdAmount = this.starAmount * 0.015 + (this.starAmount * 0.015)*config.koefizzient;
 
   }
 
