@@ -71,6 +71,7 @@
         </label>
       </div>
     </section>
-    <button class="buy-btn"  [disabled]="resi==null||isError_2"> Buy {{starAmount}} Telegram Stars</button>
+    <button class="buy-btn"  [disabled]="resi==null||isError_2" (click)="buyStars()"> Buy {{starAmount}} Telegram Stars</button>
+
   </div>
 </div>

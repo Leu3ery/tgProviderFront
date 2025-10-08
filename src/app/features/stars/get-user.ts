@@ -16,5 +16,8 @@ export class GetUser {
   get_TonRate(){
     return this.http.get<TonRate>(`${config.basicURL}/stars/getTonRate`);
   }
+  buyStars(receiverUsername:string , amount:number , ){
+    return this.http.post(`${config.basicURL}/stars/buyStars` , {"amount" :amount, "receiverUsername" : receiverUsername});
+  }
 
 }

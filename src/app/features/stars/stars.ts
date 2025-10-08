@@ -31,11 +31,16 @@ export class Stars {
   recipientUsername: string = "";
   mes = "";
   mes_2 :string|number = ""
+
   starAmount : number = 50;
   usdAmount : number = 0;
   selectedPackageAmount: number | null = null; // выбранный пакет (радио)#
   tonRate : number = 3;
-
+  get tonAmount(): number {
+    return ((0.015 * this.starAmount) / this.tonRate)
+      + config.koefizzient * ((0.015 * this.starAmount) / this.tonRate);
+  }
+  auth = inject(Auth);
   packages: { amount: number; price: number }[] = [
     { amount: 50,   price: 0 },
     { amount: 500,  price: 0 },
@@ -99,10 +104,11 @@ checkStarsAmount(){
       this.isError_2 = true;
       this.isClassic = false;
       this.mes_2 = "You can buy a minimum of 50 stars";
+
     }else {
       this.isError_2 = false;
       this.isClassic = true;
-      this.mes_2 = ((0.015 * this.starAmount) / this.tonRate) + config.koefizzient * ((0.015 * this.starAmount) / this.tonRate);
+      this.mes_2 = this.tonAmount
       this.getUSD()
     }
 }
@@ -116,6 +122,22 @@ checkStarsAmount(){
 
   }
   buyStars(){
+  if(this.tonAmount >= this.auth.user()!.balance ){
+    alert("You have not enough TON!")
+  }else{
+    if(confirm("You are buying " + this.starAmount + " stars. To @" + this.recipientUsername + "Is everything okay?" )){
+      this.proof_user.buyStars(this.recipientUsername , this.starAmount).subscribe({
+        next: (res ) => {
+          alert("You successfully bought " + this.starAmount + " stars!");
+        },
+        error: err => {
+          alert(err);
+        }
+      })
+    }
+
+  }
+
 
   }
 
