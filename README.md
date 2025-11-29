@@ -1,59 +1,59 @@
-# TgProviderFront
+# 📱 TgProvider Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.1.
+Angular-based Telegram Mini App frontend for TgProvider.
 
-## Development server
+## 🚀 Tech Stack
 
-To start a local development server, run:
+- Angular 20
+- TypeScript
+- Telegram Web App SDK
+- TON Connect
+
+## ⚙️ Local Setup
+
+### 1. Configure Environment
+
+Edit `src/environment.ts` to set your backend API URL and configuration:
+
+```typescript
+export const config = {
+    basicURL: 'http://localhost:3000/api',                    // Backend API URL
+    botURL: 'https://t.me/your_bot',                         // Telegram bot URL
+    manifestURL: 'http://localhost:4200/tonconnect-manifest.json',  // TON Connect manifest URL
+    tonAddress: 'your_ton_wallet_address',                   // TON wallet address for payments
+    koefizzient: 0.10                                        // Exchange rate coefficient
+}
+```
+
+### 2. Run the Development Server
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The application will be available at `http://localhost:4200/`.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 3. Build for Production
 
 ```bash
-ng generate component component-name
+ng build --configuration production
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The build artifacts will be stored in the `dist/` directory.
 
-```bash
-ng generate --help
+## 📁 Project Structure
+
+```
+tgProviderFront/
+├── src/
+│   ├── app/
+│   │   ├── core/           # Core services and interceptors
+│   │   ├── features/       # Feature components (main, stars, header, footer)
+│   │   └── models/         # TypeScript models
+│   └── environment.ts      # Environment configuration
+└── public/                 # Static assets
 ```
 
-## Building
+## 🔗 Related Repository
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Backend**: [tgProvider](https://github.com/Leu3ery/tgProvider) - See backend README for complete setup instructions
