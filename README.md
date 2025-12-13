@@ -2,6 +2,10 @@
 
 Angular-based Telegram Mini App frontend for TgProvider.
 
+## 🤖 Bot
+
+The bot is now available at: [@yourtgprovider_bot](https://t.me/yourtgprovider_bot)
+
 ## 🚀 Tech Stack
 
 - Angular 20
@@ -54,6 +58,7 @@ tgProviderFront/
 └── public/                 # Static assets
 ```
 
-## 🔗 Related Repository
+## 🔗 Related Repositories
 
 - **Backend**: [tgProvider](https://github.com/Leu3ery/tgProvider) - See backend README for complete setup instructions
+- **Bot**: [tgProviderBot](https://github.com/Leu3ery/tgProviderBot) - Telegram bot for selling Telegram Stars through Mini App
