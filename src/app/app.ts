@@ -4,6 +4,7 @@ import { Auth } from './core/services/auth';
 import type { WebApp } from '@twa-dev/types';
 import { JsonPipe } from '@angular/common';
 import { User } from './models/auth.models';
+import { config } from '../environment';
 
 declare global {
   interface Window {
@@ -23,9 +24,11 @@ export class App {
   auth = inject(Auth);
 
   constructor() {
-    // this.auth.getMe().subscribe((user: User) => {
-    //   this.auth.user.set(user);
-    // });
+    if (config.devMode && !window.Telegram?.WebApp?.initData) {
+      this.auth.user.set(config.devUser);
+      return;
+    }
+
     this.auth.getMe().subscribe((user) => this.auth.user.set(user));
 
     setInterval(() => {

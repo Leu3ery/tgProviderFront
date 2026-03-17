@@ -1,3 +1,9 @@
+.header-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
 .wallet-header {
   display: flex;
   justify-content: space-between;
@@ -7,6 +13,7 @@
   max-width: var(--width-default);
   border-radius: var(--border-radius-default);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  gap: 1rem;
 }
 
 /* --- Ліва частина: баланс --- */
@@ -14,6 +21,53 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.purchase-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  background-color: var(--tg-theme-secondary-bg-color);
+  padding: var(--padding-default);
+  border-radius: var(--border-radius-default);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.switch-button {
+  min-height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--tg-theme-section-bg-color) 92%, transparent);
+  color: var(--tg-theme-hint-color);
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding: 0.85rem 1rem;
+}
+
+.switch-button:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--theme-color) 35%, transparent);
+  color: var(--tg-theme-text-color);
+}
+
+.switch-button.active {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--theme-color) 22%, var(--tg-theme-section-bg-color)),
+    color-mix(in srgb, var(--theme-color) 45%, var(--tg-theme-section-bg-color))
+  );
+  color: var(--tg-theme-text-color);
+  border-color: color-mix(in srgb, var(--theme-color) 45%, transparent);
+  box-shadow:
+    0 10px 24px color-mix(in srgb, var(--theme-color) 25%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
 }
 
 .wallet-currency-icon {
@@ -127,4 +181,14 @@
 .btn-confirm:hover,
 .btn-cancel:hover {
   opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .wallet-header {
+    align-items: center;
+  }
+
+  .purchase-panel {
+    gap: 0.6rem;
+  }
 }

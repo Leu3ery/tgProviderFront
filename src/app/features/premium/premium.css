@@ -27,7 +27,6 @@
   border-radius: 24px;
   padding: 2.5rem;
   width: 100%;
-  max-width: 520px;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
     0 0 1px rgba(255, 255, 255, 0.1) inset;
@@ -178,30 +177,12 @@
 }
 
 .pkg-right {
-  color: var(--theme-color);
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: -0.01em;
+  color: var(--tg-theme-text-color);
 }
 
 .pkg-right.is-loading {
-  color: var(--tg-theme-hint-color);
-}
-
-.premium-badge {
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffc83d;
-  filter: drop-shadow(0 2px 6px rgba(255, 200, 61, 0.35));
-}
-
-.premium-badge svg {
-  width: 100%;
-  height: 100%;
-  fill: currentColor;
+  color: var(--tg-theme-text-color);
+  min-width: 1px;
 }
 
 .icon {
@@ -241,6 +222,13 @@
   padding-top: 10px;
   opacity: 0.7;
   letter-spacing: -0.01em;
+}
+
+#usd {
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.7;
 }
 
 .buy-btn {

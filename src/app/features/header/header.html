@@ -1,12 +1,33 @@
-<div class="wallet-header">
-  <div class="wallet-balance">
-    <img src="ton_symbol.svg" alt="TON" class="wallet-currency-icon" />
-    <span class="wallet-amount">{{(auth.user()?.balance ?? 0) / 1000000000 | currency:'':'':'1.2-3'}}</span>
-    <button class="wallet-add" (click)="openPopup()">+</button>
+<div class="header-stack">
+  <div class="wallet-header">
+    <div class="wallet-balance">
+      <img src="ton_symbol.svg" alt="TON" class="wallet-currency-icon" />
+      <span class="wallet-amount">{{(auth.user()?.balance ?? 0) / 1000000000 | currency:'':'':'1.2-3'}}</span>
+      <button class="wallet-add" (click)="openPopup()">+</button>
+    </div>
+
+    <div id="ton-connect"></div>
+    <button (click)="connect()" hidden>Connect</button>
   </div>
 
-  <div id="ton-connect"></div>
-  <button (click)="connect()" hidden>Connect</button>
+  <nav class="purchase-panel" aria-label="Purchase type">
+    <a
+      routerLink="/stars"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="switch-button"
+    >
+      Stars
+    </a>
+
+    <a
+      routerLink="/premium"
+      routerLinkActive="active"
+      class="switch-button"
+    >
+      Premium
+    </a>
+  </nav>
 </div>
 
 
@@ -24,4 +45,3 @@
   </div>
 </div>
 }
-

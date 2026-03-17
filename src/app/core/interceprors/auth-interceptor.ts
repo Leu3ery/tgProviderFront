@@ -1,23 +1,43 @@
-import { HttpInterceptorFn } from '@angular/common/http';
-import { catchError, switchMap, throwError } from 'rxjs';
+import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
+import { catchError, of, switchMap, throwError } from 'rxjs';
 import { Auth } from '../services/auth';
 import { Router } from '@angular/router';
 import { inject } from '@angular/core';
+import { config } from '../../../environment';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
   const auth = inject(Auth);
+  const telegramInitData = window.Telegram?.WebApp?.initData;
+
+  if (config.devMode && req.url.endsWith('/users/me')) {
+    auth.user.set(config.devUser);
+
+    return next(
+      req.clone({
+        headers: req.headers.delete('Authorization'),
+      })
+    ).pipe(
+      catchError(() => {
+        return of(new HttpResponse({ status: 200, body: config.devUser }));
+      })
+    );
+  }
 
   if (req.url.includes('/login')) {
     return next(req);
   }
 
   if (!localStorage.getItem('token')) {
-    if (!window.Telegram.WebApp.initData) {
+    if (!telegramInitData) {
+      if (config.devMode) {
+        return next(req);
+      }
+
       router.navigate(['/noTg']);
       return throwError(() => new Error('No Telegram initData'));
     } else {
-      return auth.loginR(window.Telegram.WebApp.initData).pipe(
+      return auth.loginR(telegramInitData).pipe(
         switchMap(() => {
           const newToken = localStorage.getItem('token') || '';
           const reqWithToken = req.clone({
@@ -41,13 +61,15 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   return next(reqWithToken).pipe(
     catchError((err) => {
       if (err.status === 401 || err.status === 403) {
-        if (!window.Telegram.WebApp.initData) {
+        if (!telegramInitData) {
+          if (config.devMode) {
+            return throwError(() => err);
+          }
+
           router.navigate(['/noTg']);
           return throwError(() => err);
         } else {
-          console.log(window.Telegram.WebApp);
-          console.log("initdata", window.Telegram.WebApp.initData);
-          return auth.loginR(window.Telegram.WebApp.initData).pipe(
+          return auth.loginR(telegramInitData).pipe(
             switchMap(() => {
               const newToken = localStorage.getItem('token') || '';
               const reqWithToken = req.clone({
