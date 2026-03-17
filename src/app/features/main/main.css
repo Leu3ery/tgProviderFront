@@ -29,11 +29,11 @@
 
 .app-content {
   flex: 1;
-  /* to commit  */
-  /* background-color: var(--tg-theme-secondary-bg-color); */
+  min-height: 0;
+  display: flex;
 }
 
 .app-footer {
-  /* to commit  */
-  background-color: var(--tg-theme-secondary-bg-color);
+  display: flex;
+  justify-content: center;
 }
