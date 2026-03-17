@@ -18,7 +18,6 @@
   height: 100%;
   width: var(--width-default);
   padding: 1rem;
-  position: relative;
 
   gap: 1rem;
 }
@@ -32,17 +31,10 @@
   flex: 1;
   min-height: 0;
   display: flex;
-  padding-bottom: calc(96px + var(--tg-safe-area-inset-bottom, 0px));
 }
 
 .app-footer {
-  position: fixed;
-  left: 50%;
-  bottom: calc(16px + var(--tg-safe-area-inset-bottom, 0px));
-  transform: translateX(-50%);
   display: flex;
   justify-content: center;
-  width: min(var(--width-default), calc(100vw - 2rem));
-  z-index: 1000;
-  pointer-events: none;
+  padding-bottom: calc(8px + var(--tg-safe-area-inset-bottom, 0px));
 }

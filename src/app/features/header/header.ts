@@ -5,12 +5,13 @@ import { config } from '../../../environment';
 import { FormsModule } from '@angular/forms';
 import { Transaktions } from './transaktions';
 import { firstValueFrom } from 'rxjs';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 declare let TON_CONNECT_UI: any;
 
 @Component({
   selector: 'app-header',
-  imports: [CurrencyPipe, FormsModule],
+  imports: [CurrencyPipe, FormsModule, RouterLink, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
