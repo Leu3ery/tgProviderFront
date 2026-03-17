@@ -1,0 +1,61 @@
+.bottom-switcher {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1rem;
+  border-radius: 22px;
+  background: linear-gradient(
+    145deg,
+    var(--tg-theme-secondary-bg-color),
+    color-mix(in srgb, var(--tg-theme-secondary-bg-color) 94%, var(--theme-color))
+  );
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.25),
+    0 0 1px rgba(255, 255, 255, 0.08) inset;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.switch-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--tg-theme-section-bg-color) 92%, transparent);
+  color: var(--tg-theme-hint-color);
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.switch-button img,
+.switch-button svg {
+  width: 28px;
+  height: 28px;
+}
+
+.switch-button svg {
+  fill: currentColor;
+}
+
+.switch-button:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--theme-color) 35%, transparent);
+  color: var(--tg-theme-text-color);
+}
+
+.switch-button.active {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--theme-color) 22%, var(--tg-theme-section-bg-color)),
+    color-mix(in srgb, var(--theme-color) 45%, var(--tg-theme-section-bg-color))
+  );
+  color: #ffc83d;
+  border-color: color-mix(in srgb, var(--theme-color) 45%, transparent);
+  box-shadow:
+    0 10px 24px color-mix(in srgb, var(--theme-color) 25%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}

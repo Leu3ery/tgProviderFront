@@ -12,3 +12,7 @@ export interface Recipient {
 export interface TonRate {
   "tonRate": number;
 }
+
+export interface PremiumPreview {
+  tonAmount: number;
+}

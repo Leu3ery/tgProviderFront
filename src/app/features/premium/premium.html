@@ -1,0 +1,79 @@
+<div class="center">
+  <div class="buy-premium-card">
+    <h1>Buy Telegram Premium</h1>
+    <p class="subtitle">
+      Gift Telegram Premium to yourself, your friends and your colleagues.
+    </p>
+
+    <section class="section">
+      <div class="recipient-header">
+        <h3>Choose recipient</h3>
+      </div>
+
+      <div class="recipient">
+        <input
+          type="text"
+          placeholder="Enter Telegram username..."
+          [(ngModel)]="recipientUsername"
+          (blur)="getUserInfo()"
+          (input)="checkEmpty()"
+        />
+      </div>
+      <p [class.error]="isError" [class.success]="isSuccess">{{ mes }}</p>
+    </section>
+
+    <section class="section">
+      <h3>Select Premium duration</h3>
+
+      <div class="package-list">
+        <label class="package" *ngFor="let pkg of packages">
+          <input
+            type="radio"
+            name="premium"
+            [value]="pkg.months"
+            [(ngModel)]="selectedMonths"
+            (ngModelChange)="onPackageChange($event)"
+          />
+          <div class="package-content">
+            <span class="pkg-left">
+              <span class="premium-badge" aria-hidden="true">
+                <svg viewBox="0 0 28 28">
+                  <path
+                    d="m8.88 13.45 2.89-5.71c.33-.66 1.14-.93 1.8-.6.25.13.46.35.59.61l2.73 5.51c.22.45.66.76 1.16.82l5.7.68c.78.09 1.33.79 1.24 1.57-.04.31-.18.61-.41.84l-4.52 4.42c-.18.18-.27.43-.23.68l.75 5.98c.1.85-.5 1.63-1.36 1.74-.32.04-.65-.02-.94-.18l-4.77-2.59c-.34-.19-.76-.19-1.11-.01l-4.93 2.52c-.7.35-1.55.07-1.91-.62-.13-.26-.18-.55-.14-.84l.4-2.74c.19-1.34 1.03-2.51 2.23-3.12l5.49-2.78c.15-.08.2-.26.13-.4-.06-.12-.18-.18-.31-.16l-6.71.95c-1.02.15-2.06-.14-2.87-.79l-2.23-1.82c-.64-.51-.73-1.45-.22-2.09.24-.29.59-.48.97-.53l5.73-.74c.36-.04.68-.27.85-.6z"
+                  />
+                </svg>
+              </span>
+              {{ pkg.months }} {{ pkg.months === 1 ? 'month' : 'months' }}
+            </span>
+
+            <span class="pkg-right" [class.is-loading]="pkg.price == null">
+              <img *ngIf="pkg.price != null" src="ton_symbol.svg" alt="TON" class="icon" />
+              {{ pkg.price == null ? '...' : (pkg.price | number: '1.2-4') }}
+            </span>
+          </div>
+        </label>
+      </div>
+
+      <p [class.error]="isError_2" [class.classic]="isClassic">
+        @if (typeof mes_2 === 'string') {
+          {{ mes_2 }}
+        } @else {
+          <img
+            src="ton_symbol.svg"
+            alt="TON"
+            style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;"
+          />
+          <span>{{ mes_2 | number: '1.2-4' }}</span>
+        }
+      </p>
+    </section>
+
+    <button
+      class="buy-btn"
+      [disabled]="resi == null || selectedPrice == null || isLoadingPrices"
+      (click)="buyPremium()"
+    >
+      Buy Telegram Premium
+    </button>
+  </div>
+</div>
